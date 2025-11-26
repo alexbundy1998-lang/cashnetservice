@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { SkipLink } from "@/components/skip-link"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { MobileNav } from "@/components/mobile-nav"
 
 export default function FAQsPage() {
     return (
