@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Phone, Mail, MapPin, Clock } from "lucide-react"
 import { SkipLink } from "@/components/skip-link"
 import { useToast } from "@/hooks/use-toast"
+import { MobileNav } from "@/components/mobile-nav"
 
 export default function ContactUsPage() {
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -85,6 +86,7 @@ export default function ContactUsPage() {
                             <Link href="/bank-authentication">Apply Now</Link>
                         </Button>
                     </nav>
+                    <MobileNav />
                 </div>
             </header>
 
@@ -137,7 +139,7 @@ export default function ContactUsPage() {
                                                 <div>
                                                     <h3 className="font-semibold">Address</h3>
                                                     <p className="text-sm text-muted-foreground">
-                                                        200 West Jackson, Suite 1400<br />
+                                                        200 West Jackson Blvd, Suite 1400<br />
                                                         Chicago, IL 60606<br />
                                                         United States
                                                     </p>

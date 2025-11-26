@@ -37,6 +37,7 @@ export default function RatesAndTermsPage() {
                             <Link href="/bank-authentication">Apply Now</Link>
                         </Button>
                     </nav>
+                    <MobileNav />
                 </div>
             </header>
 

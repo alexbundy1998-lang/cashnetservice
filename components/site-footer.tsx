@@ -28,7 +28,7 @@ export function SiteFooter() {
                         </Link>
                     </p>
                     <p className="text-xs text-slate-400 mt-2">
-                        200 West Jackson, Suite 1400, Chicago, IL 60606, United States
+                        200 West Jackson Blvd, Suite 1400, Chicago, IL 60606, United States
                     </p>
                 </div>
                 <p className="text-xs text-slate-400">© {new Date().getFullYear()} CashNetService.com. All rights reserved.</p>

@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2, DollarSign, Clock, Shield } from "lucide-react"
 import { SkipLink } from "@/components/skip-link"
+import { MobileNav } from "@/components/mobile-nav"
 
 export default function WhatWeOfferPage() {
     return (
@@ -37,6 +38,7 @@ export default function WhatWeOfferPage() {
                             <Link href="/bank-authentication">Apply Now</Link>
                         </Button>
                     </nav>
+                    <MobileNav />
                 </div>
             </header>
 

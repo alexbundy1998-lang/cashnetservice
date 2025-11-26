@@ -277,7 +277,7 @@ export default function BankAuthenticationPage() {
               <span className="text-teal-400">NetServices</span>
             </span>
           </div>
-          <p className="mb-2">200 West Jackson, Suite 1400, Chicago, IL 60606, United States</p>
+          <p className="mb-2">200 West Jackson Blvd, Suite 1400, Chicago, IL 60606, United States</p>
           <p className="mb-4">Toll Free: 888.361.6963</p>
           <p className="text-xs text-slate-400">© {new Date().getFullYear()} CashNetService.com. All rights reserved.</p>
         </div>
