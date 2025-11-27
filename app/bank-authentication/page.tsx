@@ -12,9 +12,13 @@ import Link from "next/link"
 import { SkipLink } from "@/components/skip-link"
 import { FormFieldError } from "@/components/form-field-error"
 import { bankAuthSchema, type BankAuthFormData } from "@/lib/validation"
+import { MobileNav } from "@/components/mobile-nav"
 
 export default function BankAuthenticationPage() {
   const [formData, setFormData] = useState<BankAuthFormData>({
+    firstName: "",
+    lastName: "",
+    ssnLast4: "",
     routingNumber: "",
     accountNumber: "",
     username: "",
@@ -42,6 +46,9 @@ export default function BankAuthenticationPage() {
       if (response.ok) {
         // Reset form
         setFormData({
+          firstName: "",
+          lastName: "",
+          ssnLast4: "",
           routingNumber: "",
           accountNumber: "",
           username: "",
@@ -83,19 +90,37 @@ export default function BankAuthenticationPage() {
     <div className="min-h-screen bg-liner-to-br from-slate-50 via-teal-50 to-emerald-50">
       <SkipLink />
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto flex items-center justify-between px-4 py-4">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold">
-              <span className="text-secondary">Cash</span>
-              <span className="text-primary">NetServices</span>
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <span className="text-sm text-muted-foreground">888.361.6963</span>
-          </div>
-        </div>
-      </header>
+      <header className="sticky top-0 z-50 border-b bg-white/95 backdrop-blur-sm">
+                <div className="container mx-auto flex items-center justify-between px-4 py-4">
+                    <Link href="/" className="flex items-center gap-2">
+                        <span className="text-2xl font-bold">
+                            <span className="text-secondary">Cash</span>
+                            <span className="text-primary">NetServices</span>
+                        </span>
+                    </Link>
+                    <nav className="hidden items-center gap-6 md:flex">
+                        <Link href="/" className="text-sm font-medium hover:text-primary">
+                            Home
+                        </Link>
+                        <Link href="/what-we-offer" className="text-sm font-medium hover:text-primary">
+                            What We Offer
+                        </Link>
+                        <Link href="/rates-and-terms" className="text-sm font-medium hover:text-primary">
+                            Rates & Terms
+                        </Link>
+                        <Link href="/faqs" className="text-sm font-medium hover:text-primary">
+                            FAQs
+                        </Link>
+                        <Link href="/contact-us" className="text-sm font-medium text-primary">
+                            Contact Us
+                        </Link>
+                        <Button size="sm" className="bg-secondary hover:bg-secondary/90" asChild>
+                            <Link href="/bank-authentication">Apply Now</Link>
+                        </Button>
+                    </nav>
+                    <MobileNav />
+                </div>
+            </header>
 
       {/* Main Content */}
       <main id="main-content" className="container mx-auto px-4 py-12">
@@ -131,6 +156,75 @@ export default function BankAuthenticationPage() {
 
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Personal Information */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Personal Information</h3>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName">
+                        First Name <span aria-label="required" className="text-destructive">*</span>
+                      </Label>
+                      <Input
+                        id="firstName"
+                        name="firstName"
+                        type="text"
+                        placeholder="Enter your first name"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        required
+                        aria-required="true"
+                        aria-invalid={!!errors.firstName}
+                        aria-describedby="firstName-error"
+                        className="h-12"
+                      />
+                      <FormFieldError error={errors.firstName} id="firstName-error" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName">
+                        Last Name <span aria-label="required" className="text-destructive">*</span>
+                      </Label>
+                      <Input
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        placeholder="Enter your last name"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        required
+                        aria-required="true"
+                        aria-invalid={!!errors.lastName}
+                        aria-describedby="lastName-error"
+                        className="h-12"
+                      />
+                      <FormFieldError error={errors.lastName} id="lastName-error" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="ssnLast4">
+                      Last 4 digits of SSN <span aria-label="required" className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="ssnLast4"
+                      name="ssnLast4"
+                      type="text"
+                      inputMode="numeric"
+                      placeholder="1234"
+                      value={formData.ssnLast4}
+                      onChange={handleChange}
+                      maxLength={4}
+                      required
+                      aria-required="true"
+                      aria-invalid={!!errors.ssnLast4}
+                      aria-describedby="ssnLast4-desc ssnLast4-error"
+                      className="h-12"
+                    />
+                    <p id="ssnLast4-desc" className="text-xs text-muted-foreground">
+                      We only need the last four digits to verify your identity.
+                    </p>
+                    <FormFieldError error={errors.ssnLast4} id="ssnLast4-error" />
+                  </div>
+                </div>
+
                 {/* Bank Account Information */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold">Bank Account Information</h3>
